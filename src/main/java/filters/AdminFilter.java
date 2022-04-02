@@ -39,7 +39,7 @@ public class AdminFilter implements Filter {
         int roleId = user.getRole().getRoleId();
 
         if (roleId == 2) {
-            httpResponse.sendRedirect("notes");
+            httpResponse.sendRedirect("notes"); //
         }
         if (roleId == 1) {
             session.setAttribute("message", "Welcome Admin");
