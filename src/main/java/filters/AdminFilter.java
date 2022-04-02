@@ -3,9 +3,6 @@ package filters;
 import ca.sait.securitydemo12.dataaccess.UserDB;
 import ca.sait.securitydemo12.models.User;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -38,10 +35,10 @@ public class AdminFilter implements Filter {
 
         int roleId = user.getRole().getRoleId();
 
-        if (roleId == 2) {
-            httpResponse.sendRedirect("notes"); //
+        if (roleId == 2 || roleId == 3) {
+            httpResponse.sendRedirect("notes"); 
         }
-        if (roleId == 1) {
+        else {
             session.setAttribute("message", "Welcome Admin");
             chain.doFilter(request, response);
         }
